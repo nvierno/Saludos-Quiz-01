@@ -806,14 +806,16 @@
 
         const questions = [
             {
-                question: "🍖 What's your ideal drinking vibe?",
+                question: "🍖 What's your ideal vibe?",
                 spanish: "¿Cuál es tu ambiente favorito para pistear?",
                 imageText: "Image: Carne asada grill, friends relaxing, party scene",
                 options: [
                     { text: "Carne Asada with la familia", scores: { party: 3, citrus: 1, traditional: 2 } },
                     { text: "After the chamba, just chillin'", scores: { refreshing: 3, light: 1, smooth: 1 } },
-                    { text: "Watching movies", scores: { light: 1, refreshing: 2, smooth: 3 } },
-                    { text: "Surprise me, amigo!", scores: { randomize: true } }
+                    { text: "Somewhere classy", scores: { unique: 3, light: 2, smooth: 2 } },
+                    { text: "Snapping pics for the 'gram'", scores: { refreshing: 3, light: 2, smooth: 2 } },
+                    { text: "Watching a great movie", scores: { light: 1, refreshing: 2, smooth: 3 } },
+                    { text: "I'm always up for anything!", scores: { randomize: true } }
                 ]
             },
             {
@@ -823,9 +825,9 @@
                 options: [
                     { text: "A night out on the town", scores: { bold: 2, party: 2, adventurous: 1 } },
                     { text: "Exploring new places", scores: { smooth: 2, light: 1, unique: 1, historical: 3, refreshing: 1 } },
-                    { text: "Being with family", scores: { sweet: 2, smooth: 1, traditional: 2, historical: 1 } },
+                    { text: "Being with family", scores: { sweet: 2, smooth: 1, traditional: 2, historical: 3 } },
                     { text: "Meeting new people", scores: { refreshing: 2, rich: 2, adventurous: 3 } },
-                    { text: "I'm up for anything!", scores: { randomize: true } }
+                    { text: "I like surprises!", scores: { randomize: true } }
                 ]
             },
             {
@@ -835,26 +837,26 @@
                 options: [
                     { text: "Bold & Hoppy", scores: { bold: 2, hoppy: 2, adventurous: 1 } },
                     { text: "Smooth & Refreshing", scores: { smooth: 2, light: 2, refreshing: 1 } },
-                    { text: "Sweet & Citrusy", scores: { sweet: 2, fruity: 1, smooth: 1 } },
+                    { text: "Sweet & Fruity", scores: { sweet: 2, fruity: 1, smooth: 1 } },
                     { text: "Rich & Dark", scores: { historical: 2, malty: 2, rich: 2, traditional: 1 } },
                     { text: "¡Lo que Dios quiera!", scores: { randomize: true } }
                 ]
             },
             {
-                question: "🌮 What flavor calls to your alma?",
+                question: "🌮 What flavor calls to your soul?",
                 spanish: "¿Cuál de estos te atrae más?",
                 imageText: "Image: Agua de jamaica, café de olla, mangonada",
                 options: [
-                    { text: "Crisp & delicious", scores: { light: 2, refreshing: 2, citrus: 1 } },
+                    { text: "Crisp & Delicious", scores: { light: 2, refreshing: 2, citrus: 1 } },
                     { text: "Dark & Rich", scores: { coffee: 2, dark: 2, rich: 1 } },
-                    { text: "Tart & Fruity", scores: { fruity: 2, sweet: 2, unique: 1 } },
+                    { text: "Citrusy & Bold", scores: { fruity: 2, sweet: 2, unique: 1 } },
                     { text: "Something Unique", scores: { unique: 4, adventurous: 1, refreshing: 1 } },
                     { text: "Anything Goes!", scores: { randomize: true } }
                 ]
             },
             {
-                question: "🍻 How much kick do you want in your cerveza?",
-                spanish: "¿Qué tanto poder quieres en tu chela?",
+                question: "🍻 How much kick do you like in your cerveza?",
+                spanish: "¿Qué tanto poder te gusta en tu chela?",
                 imageText: "Image: ABV meter, strength gauge, alcohol percentage symbols",
                 isSlider: true,
                 sliderLabels: ["5.7% ABV - ¡Fuerte!", "4.5% ABV - Balanced", "4.0% ABV - Suave"],
@@ -871,9 +873,9 @@
                 isSlider: true,
                 sliderLabels: ["Hoppy & Bold", "Classic & Balanced", "Tropical & Sweet"],
                 sliderDescriptions: [
-                    "¡Puro punch! You love that hoppy bite and bold bitterness",
-                    "Perfect balance - not too much, not too little",
-                    "¡Ay, qué rico! Sweet, fruity, and tropical flavors call to you"
+                    "¡Puro punch! You love that hoppy bite and bold taste",
+                    "Perfect balance - not too much punch with the right amount of flavor",
+                    "¡Ay, qué rico! Sweet, fruity, tropical flavors call to you"
                 ]
             }
         ];
