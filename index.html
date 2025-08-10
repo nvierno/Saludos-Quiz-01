@@ -79,15 +79,16 @@
         .question-image {
             width: 100%;
             height: 120px;
-            background: #6c757d;
+            background: transparent;
             border-radius: 12px;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #6c757d;
             font-size: 0.9em;
             font-weight: bold;
+            border: 1px solid #e9ecef;
         }
 
         .flavor-slider-container {
@@ -290,42 +291,63 @@
         .result-beer {
             background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
-            padding: 30px;
+            padding: 20px 30px;
             border-radius: 15px;
             margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .result-beer h2 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            font-size: 2em;
+            margin-bottom: 8px;
         }
 
         .result-beer .abv {
-            font-size: 1.2em;
+            font-size: 1.1em;
             opacity: 0.9;
-            margin-bottom: 20px;
         }
 
         .result-beer-image {
-            width: 200px;
-            height: 200px;
-            background: #6c757d;
-            border-radius: 12px;
-            margin: 20px auto;
+            width: 500px;
+            height: 500px;
+            background: transparent;
+            border-radius: 15px;
+            margin: 25px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 0.9em;
+            color: #6c757d;
+            font-size: 1em;
             font-weight: bold;
             flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .result-beer-image img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .result-beer-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .result-beer-image span {
+            position: absolute;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
+            border: 1px solid #dee2e6;
         }
 
         .result-description {
@@ -397,7 +419,7 @@
             width: 100%;
             max-width: 400px;
             height: 300px;
-            background: #6c757d;
+            background: transparent;
             border-radius: 12px;
             margin: 0 auto;
             display: flex;
@@ -406,7 +428,8 @@
             font-size: 1em;
             font-weight: bold;
             animation: fadeInUp 1s ease-out 0.5s both;
-            color: white;
+            color: #6c757d;
+            border: 1px solid #e9ecef;
         }
 
         .welcome-logo img {
@@ -488,6 +511,41 @@
             .question h3 {
                 font-size: 1.2em;
             }
+            
+            .result-beer-image {
+                width: 350px;
+                height: 350px;
+                margin: 20px auto;
+            }
+
+            .result-beer {
+                padding: 15px 20px;
+            }
+
+            .result-beer h2 {
+                font-size: 1.7em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .result-beer-image {
+                width: 280px;
+                height: 280px;
+                margin: 15px auto;
+            }
+
+            .result-beer {
+                padding: 12px 15px;
+            }
+
+            .result-beer h2 {
+                font-size: 1.5em;
+                margin-bottom: 5px;
+            }
+
+            .result-beer .abv {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -508,9 +566,7 @@
                 <div class="welcome-header">
                     <h1>¡Órale! Let's Find Your Cerveza</h1>
                     <div class="welcome-logo">
-                        <img src="saludos-brewing-logo.png" 
-                             alt="Saludos Brewing Company Logo"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span>Saludos Brewing Company Logo</span>
                     </div>
                 </div>
                 <div class="welcome-footer">
@@ -617,20 +673,21 @@
             }
         };
 
+        // Beer images mapping
         const beerImages = {
-            'TXMX MEXICAN LAGER': 'Images/beer-in-glass-01.jpg',
+            'TXMX MEXICAN LAGER': 'images/txmx_mexican_lager.jpg',
             'EL HEFE': 'images/el_hefe.jpg',
-            'CASA BLANCA WHEAT ALE': 'Images/beer-in-glass-02.jpg',
-            'STEAM BEER': 'Images/beer-in-glass-02.jpg',
-            'AMERICANO AMBER ALE': 'Images/beer-in-glass-01.jpg',
-            'LA SANCHA P.O.G. ALE': 'Images/beer-in-glass-02.jpg',
-            'WERITA BLONDE ALE': 'Images/beer-in-glass-01.jpg',
-            'LA SUEGRA PALE ALE': 'Images/beer-in-glass-02.jpg',
-            'JUGUITO IPA': 'Images/beer-in-glass-01.jpg',
-            'GALLO NEGRO BLACK IPA': 'Images/beer-in-glass-02.jpg',
-            'CERVEZA NEGRA STOUT': 'Images/beer-in-glass-01.jpg',
-            'EL CHAPARRO BLACK LAGER': 'Images/beer-in-glass-02.jpg',
-            'MANGONADA WHEAT ALE': 'Images/beer-in-glass-01.jpg'
+            'CASA BLANCA WHEAT ALE': 'images/casa_blanca_wheat_ale.jpg',
+            'STEAM BEER': 'images/steam_beer.jpg',
+            'AMERICANO AMBER ALE': 'images/americano_amber_ale.jpg',
+            'LA SANCHA P.O.G. ALE': 'images/la_sancha_pog_ale.jpg',
+            'WERITA BLONDE ALE': 'images/werita_blonde_ale.jpg',
+            'LA SUEGRA PALE ALE': 'images/la_suegra_pale_ale.jpg',
+            'JUGUITO IPA': 'images/juguito_ipa.jpg',
+            'GALLO NEGRO BLACK IPA': 'images/gallo_negro_black_ipa.jpg',
+            'CERVEZA NEGRA STOUT': 'images/cerveza_negra_stout.jpg',
+            'EL CHAPARRO BLACK LAGER': 'images/el_chaparro_black_lager.jpg',
+            'MANGONADA WHEAT ALE': 'images/mangonada_wheat_ale.jpg'
         };
 
         const questions = [
@@ -1009,10 +1066,7 @@
                     <div class="welcome-header">
                         <h1>¡Órale! Let's Find Your Cerveza</h1>
                         <div class="welcome-logo">
-                            <img src="https://github.com/nvierno/Saludos-Quiz-01/blob/68046a392dac9c409f9a5b053acd2df445560f1a/saludos-brewing-logo.png" 
-                                 alt="Saludos Brewing Company Logo"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span style="display:none;">Saludos Brewing Company Logo</span>
+                            <span>Saludos Brewing Company Logo</span>
                         </div>
                     </div>
                     <div class="welcome-footer">
@@ -1036,10 +1090,6 @@
             document.getElementById('progressFill').style.width = '0%';
         }
 
-        // Initialize the quiz when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initQuiz();
-        });
     </script>
 </body>
 </html>
