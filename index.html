@@ -13,8 +13,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: url('https://i.imgur.com/EMO4YUx.jpeg') no-repeat center center/cover,
-                    linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(247,147,30,0.1) 100%);
+            background: linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(247,147,30,0.1) 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -181,15 +180,11 @@
             font-size: 16px;
             width: 100%;
             transition: all 0.3s ease;
-            opacity: 0.5;
+            opacity: 1;
         }
 
         .slider-confirm-btn:hover:not(:disabled) {
             background: #e55a2b;
-        }
-
-        .slider-confirm-btn.active {
-            opacity: 1;
         }
 
         .question h3 {
@@ -313,10 +308,9 @@
         }
 
         .result-beer-image {
-            width: 100%;
-            max-width: 300px;
+            width: 200px;
             height: 200px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             margin: 20px auto;
             display: flex;
@@ -326,6 +320,14 @@
             font-size: 0.9em;
             font-style: italic;
             border: 2px dashed #dee2e6;
+            flex-shrink: 0;
+        }
+
+        .result-beer-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .result-description {
@@ -346,18 +348,17 @@
         }
 
         .welcome-page {
-            display: block;
+            display: none;
             text-align: center;
             animation: fadeIn 0.5s ease;
             height: 100%;
-            display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 40px 0;
         }
 
-        .welcome-page.hidden {
-            display: none;
+        .welcome-page.active {
+            display: flex;
         }
 
         .welcome-header {
@@ -398,8 +399,8 @@
             width: 100%;
             max-width: 400px;
             height: 300px;
-            background: transparent;
-            border-style: none
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -407,6 +408,15 @@
             font-size: 1em;
             font-style: italic;
             animation: fadeInUp 1s ease-out 0.5s both;
+            border: 2px dashed #dee2e6;
+            color: #6c757d;
+        }
+
+        .welcome-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .welcome-footer {
@@ -497,11 +507,11 @@
 
         <div class="quiz-content">
             <!-- Welcome Page -->
-            <div class="welcome-page" id="welcomePage">
+            <div class="welcome-page active" id="welcomePage">
                 <div class="welcome-header">
                     <h1>¡Órale! Let's Find Your Cerveza</h1>
                     <div class="welcome-logo">
-                        <img src="saludos-brewing-logo.png" alt="Description">
+                        <span>Saludos Brewing Company Logo</span>
                     </div>
                 </div>
                 <div class="welcome-footer">
@@ -509,11 +519,16 @@
                 </div>
             </div>
             
+            <!-- Questions will be rendered here -->
+            
             <!-- Result Section -->
             <div class="result" id="result">
                 <div class="result-beer">
                     <h2 id="resultBeer"></h2>
                     <div class="abv" id="resultABV"></div>
+                </div>
+                <div class="result-beer-image">
+                    <span>Beer Image</span>
                 </div>
                 <div class="result-description" id="resultDescription"></div>
                 <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
@@ -532,7 +547,7 @@
             'EL HEFE': {
                 name: 'EL HEFE',
                 abv: '4.5%',
-                description: 'This is a traditional German styled  that translates to yeast (Hefe) and wheat (Weizen). This  will have flavor notes of banana and clove; many other traditional hefeweizens have bubblegum flavor characteristics as well. This is one of the brews that has been tweaked and brewed over and over again during our pilot series and this is where it\'ll likely stay. As one of the favorite styles from the founder of Saludos Brewing Co., we feel the name El Hefe is appropriate and a fun take on our Tex-Mex lingo with a twist of German language due to the style of . This is definitely an excellent choice for hot summer days by the pool or BBQ.',
+                description: 'This is a traditional German styled wheat beer that translates to yeast (Hefe) and wheat (Weizen). This beer will have flavor notes of banana and clove; many other traditional hefeweizens have bubblegum flavor characteristics as well. This is one of the brews that has been tweaked and brewed over and over again during our pilot series and this is where it\'ll likely stay. As one of the favorite styles from the founder of Saludos Brewing Co., we feel the name El Hefe is appropriate and a fun take on our Tex-Mex lingo with a twist of German language due to the style of beer. This is definitely an excellent choice for hot summer days by the pool or BBQ.',
                 scores: { refreshing: 4, light: 4, party: 4, fruity: 5, traditional: 5 }
             },
             'CASA BLANCA WHEAT ALE': {
@@ -676,7 +691,7 @@
 
         function initQuiz() {
             if (!quizStarted) {
-                document.getElementById('welcomePage').style.display = 'flex';
+                document.getElementById('welcomePage').classList.add('active');
                 document.getElementById('progressFill').style.width = '0%';
                 return;
             }
@@ -728,8 +743,8 @@
                                 ${question.sliderDescriptions[1]}
                             </div>
                             
-                            <button class="slider-confirm-btn active" onclick="confirmSliderSelection()">
-                                ${question.question.includes("kick") ? "Select" : "¡Órale! That's my flavor"}
+                            <button class="slider-confirm-btn" onclick="confirmSliderSelection()">
+                                ${question.question.includes("kick") ? "Select Your Strength" : "¡Órale! That's my flavor"}
                             </button>
                         </div>
                         
@@ -776,6 +791,9 @@
                         <h2 id="resultBeer"></h2>
                         <div class="abv" id="resultABV"></div>
                     </div>
+                    <div class="result-beer-image">
+                        <span>Beer Image</span>
+                    </div>
                     <div class="result-description" id="resultDescription"></div>
                     <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
                 </div>
@@ -803,12 +821,10 @@
             const question = questions[currentQuestion];
             const confirmBtn = document.querySelector('.slider-confirm-btn');
             
-            if (question.question.includes("flavor spectrum")) {
-                confirmBtn.classList.add('bounce');
-                setTimeout(() => {
-                    confirmBtn.classList.remove('bounce');
-                }, 600);
-            }
+            confirmBtn.classList.add('bounce');
+            setTimeout(() => {
+                confirmBtn.classList.remove('bounce');
+            }, 600);
             
             if (question.question.includes("flavor spectrum")) {
                 if (sliderValue <= 33) {
@@ -905,7 +921,7 @@
                     } else {
                         const options = document.querySelectorAll('.option');
                         if (options[prevSelected]) {
-                            options[prevSelected]List.add('selected');
+                            options[prevSelected].classList.add('selected');
                             document.getElementById('nextBtn').disabled = false;
                         }
                     }
@@ -948,7 +964,7 @@
                         <div class="abv">ABV: ${bestMatch.abv}</div>
                     </div>
                     <div class="result-beer-image">
-                        <img src="Images/beer-in-glass-02.jpg" alt="Description">
+                        <span>🍺 ${bestMatch.name}</span>
                     </div>
                     <div class="result-description">${bestMatch.description}</div>
                     <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
@@ -971,11 +987,11 @@
             questions.forEach(q => delete q.selectedOption);
             
             document.querySelector('.quiz-content').innerHTML = `
-                <div class="welcome-page" id="welcomePage" style="display: flex;">
+                <div class="welcome-page active" id="welcomePage">
                     <div class="welcome-header">
                         <h1>¡Órale! Let's Find Your Cerveza</h1>
                         <div class="welcome-logo">
-                           <img src="https://github.com/nvierno/Saludos-Quiz-01/blob/013f5856d885ebf86cd4dff809bf73dcfd25339c/saludos-brewing-logo.png" alt="Description">
+                            <span>Saludos Brewing Company Logo</span>
                         </div>
                     </div>
                     <div class="welcome-footer">
@@ -988,6 +1004,9 @@
                         <h2 id="resultBeer"></h2>
                         <div class="abv" id="resultABV"></div>
                     </div>
+                    <div class="result-beer-image">
+                        <span>Beer Image</span>
+                    </div>
                     <div class="result-description" id="resultDescription"></div>
                     <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
                 </div>
@@ -996,8 +1015,6 @@
             document.getElementById('progressFill').style.width = '0%';
         }
 
-        // Initialize the quiz when page loads
-        initQuiz();
     </script>
 </body>
 </html>
