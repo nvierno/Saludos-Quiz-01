@@ -512,7 +512,7 @@
                     <h1>¡Órale! Let's Find Your Cerveza</h1>
                     <div class="welcome-logo">
                         <div class="welcome-logo">
-                            <img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/saludos-brewing-logo.png" 
+                            <img src="https://github.com/nvierno/Saludos-Quiz-01/blob/68046a392dac9c409f9a5b053acd2df445560f1a/saludos-brewing-logo.png" 
                                      alt="Saludos Brewing Company Logo"
                                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                             <span style="display:none;">Saludos Brewing Company Logo</span>
@@ -621,6 +621,23 @@
                 description: 'Slight sweetness from Mango combined with the traditional wheat ale flavors. This is the same recipe as our El Hefe Hefeweizen but infused with mango along with a different German styled yeast. This is definitely a refreshing delight for those hot summer days!',
                 scores: { fruity: 5, sweet: 4, refreshing: 5, unique: 4, light: 4 }
             }
+        };
+
+        const beerImages = {
+        'TXMX MEXICAN LAGER': 'Images/beer-in-glass-01.jpg',
+        'EL HEFE': 'images/el_hefe.jpg',
+        'CASA BLANCA WHEAT ALE': 'Images/beer-in-glass-02.jpg',
+        'STEAM BEER': 'Images/beer-in-glass-02.jpg.jpg',
+        'AMERICANO AMBER ALE': 'Images/beer-in-glass-01.jpg',
+        'LA SANCHA P.O.G. ALE': 'Images/beer-in-glass-02.jpg.jpg',
+        'WERITA BLONDE ALE': 'Images/beer-in-glass-01.jpg',
+        'LA SUEGRA PALE ALE': 'Images/beer-in-glass-02.jpg.jpg',
+        'JUGUITO IPA': 'Images/beer-in-glass-01.jpg',
+        'GALLO NEGRO BLACK IPA': 'Images/beer-in-glass-02.jpg.jpg',
+        'CERVEZA NEGRA STOUT': 'Images/beer-in-glass-01.jpg',
+        'EL CHAPARRO BLACK LAGER': 'Images/beer-in-glass-02.jpg.jpg',
+        'MANGONADA WHEAT ALE': 'Images/beer-in-glass-01.jpg
+            
         };
 
         const questions = [
@@ -797,7 +814,10 @@
                         <div class="abv" id="resultABV"></div>
                     </div>
                     <div class="result-beer-image">
-                        <span>Beer Image</span>
+                        <img src="${beerImages[bestMatch.name] || 'images/default_beer.jpg'}" 
+                        alt="${bestMatch.name}"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    <span style="display:none;">🍺 ${bestMatch.name}</span
                     </div>
                     <div class="result-description" id="resultDescription"></div>
                     <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
@@ -939,7 +959,7 @@
             document.getElementById('progressFill').style.width = progress + '%';
         }
 
-        function showResult() {
+        function () {
             let bestMatch = null;
             let bestScore = -1;
 
