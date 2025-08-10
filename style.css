@@ -1,0 +1,545 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(247,147,30,0.1) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.quiz-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.quiz-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.quiz-header h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.quiz-header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #ecf0f1;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b35, #f7931e);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.quiz-content {
+    padding: 40px;
+}
+
+.question {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.question.active {
+    display: block;
+}
+
+.question-image {
+    width: 100%;
+    height: 120px;
+    background: transparent;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 0.9em;
+    font-weight: bold;
+    border: 1px solid #e9ecef;
+}
+
+.flavor-slider-container {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px 25px;
+    margin: 20px 0;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.slider-label.hoppy { color: #6A7475; }
+.slider-label.classic { color: #6A7475; }
+.slider-label.tropical { color: #6A7475; }
+
+.slider-track {
+    position: relative;
+    height: 8px;
+    background: linear-gradient(90deg, #756C68 0%, #F5BA5F 50%, #F5885F 100%);
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #2c3e50;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #2c3e50;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.slider-description {
+    text-align: center;
+    margin-top: 15px;
+    color: #2c3e50;
+    font-style: italic;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-confirm-btn {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.slider-confirm-btn:hover:not(:disabled) {
+    background: #e55a2b;
+}
+
+.question h3 {
+    font-size: 1.4em;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    text-align: center;
+    font-weight: bold;
+}
+
+.question .spanish-subtitle {
+    font-size: 0.95em;
+    color: #ff6b35;
+    text-align: center;
+    margin-bottom: 25px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.options {
+    display: grid;
+    gap: 15px;
+}
+
+.option {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.option:hover {
+    border-color: #ff6b35;
+    background: #fff5f3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,107,53,0.2);
+}
+
+.option.selected {
+    border-color: #ff6b35;
+    background: #ff6b35;
+    color: white;
+}
+
+.question-counter {
+    text-align: center;
+    font-size: 0.7em;
+    color: #6c757d;
+    margin: 20px 0 15px 0;
+    opacity: 0.8;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #ff6b35;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #e55a2b;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.result {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.result.active {
+    display: block;
+}
+
+.result-beer {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-beer h2 {
+    font-size: 2em;
+    margin-bottom: 8px;
+}
+
+.result-beer .abv {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.result-beer-image {
+    width: 500px;
+    height: 500px;
+    background: transparent;
+    border-radius: 15px;
+    margin: 25px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 1em;
+    font-weight: bold;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.result-beer-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.result-beer-image img:hover {
+    transform: scale(1.02);
+}
+
+.result-beer-image span {
+    position: absolute;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.result-description {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    line-height: 1.6;
+    color: #2c3e50;
+}
+
+.restart-btn {
+    margin-top: 25px;
+    background: #2c3e50;
+}
+
+.restart-btn:hover {
+    background: #1a252f;
+}
+
+.welcome-page {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.welcome-page.active {
+    display: flex;
+}
+
+.welcome-header {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slideInFromTop 1.5s ease-out;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-logo {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    background: transparent;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: bold;
+    animation: fadeInUp 1s ease-out 0.5s both;
+    color: #6c757d;
+    border: 1px solid #e9ecef;
+}
+
+.welcome-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.welcome-footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 40px;
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+.start-quiz-btn {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+}
+
+.start-quiz-btn:hover {
+    background: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255,107,53,0.4);
+}
+
+.start-quiz-btn.bounce {
+    animation: bounceConfirm 0.6s ease-in-out;
+}
+
+.slider-confirm-btn.bounce {
+    animation: bounceConfirm 0.6s ease-in-out;
+}
+
+@keyframes bounceConfirm {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.1); }
+    40% { transform: scale(0.95); }
+    60% { transform: scale(1.05); }
+    80% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Mobile Responsive Styles */
+
+@media (max-width: 768px) {
+    .quiz-header h1 {
+        font-size: 1.8em;
+    }
+    
+    .quiz-content {
+        padding: 25px;
+    }
+    
+    .question h3 {
+        font-size: 1.2em;
+    }
+    
+    .result-beer-image {
+        width: 350px;
+        height: 350px;
+        margin: 20px auto;
+    }
+
+    .result-beer {
+        padding: 15px 20px;
+    }
+
+    .result-beer h2 {
+        font-size: 1.7em;
+    }
+}
+
+@media (max-width: 480px) {
+    .result-beer-image {
+        width: 280px;
+        height: 280px;
+        margin: 15px auto;
+    }
+
+    .result-beer {
+        padding: 12px 15px;
+    }
+
+    .result-beer h2 {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+    }
+
+    .result-beer .abv {
+        font-size: 1em;
+    }
+}
