@@ -77,18 +77,17 @@
         }
 
         .question-image {
-        width: 100%;
-        height: 120px;
-        background: #6c757d;
-        border-radius: 12px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 0.9em;
-        font-weight: bold;
-            }
+            width: 100%;
+            height: 120px;
+            background: #6c757d;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9em;
+            font-weight: bold;
         }
 
         .flavor-slider-container {
@@ -308,19 +307,18 @@
         }
 
         .result-beer-image {
-        width: 200px;
-        height: 200px;
-        background: #6c757d;
-        border-radius: 12px;
-        margin: 20px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 0.9em;
-        font-weight: bold;
-        flex-shrink: 0;
-            }
+            width: 200px;
+            height: 200px;
+            background: #6c757d;
+            border-radius: 12px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9em;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
         .result-beer-image img {
@@ -396,20 +394,19 @@
         }
 
         .welcome-logo {
-        width: 100%;
-        max-width: 400px;
-        height: 300px;
-        background: #6c757d;
-        border-radius: 12px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1em;
-        font-weight: bold;
-        animation: fadeInUp 1s ease-out 0.5s both;
-        color: white;
-            }
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: #6c757d;
+            border-radius: 12px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            font-weight: bold;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            color: white;
         }
 
         .welcome-logo img {
@@ -511,12 +508,10 @@
                 <div class="welcome-header">
                     <h1>¡Órale! Let's Find Your Cerveza</h1>
                     <div class="welcome-logo">
-                        <div class="welcome-logo">
-                            <img src="https://github.com/nvierno/Saludos-Quiz-01/blob/68046a392dac9c409f9a5b053acd2df445560f1a/saludos-brewing-logo.png" 
-                                     alt="Saludos Brewing Company Logo"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span style="display:none;">Saludos Brewing Company Logo</span>
-                        </div>
+                        <img src="https://github.com/nvierno/Saludos-Quiz-01/blob/68046a392dac9c409f9a5b053acd2df445560f1a/saludos-brewing-logo.png" 
+                             alt="Saludos Brewing Company Logo"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span style="display:none;">Saludos Brewing Company Logo</span>
                     </div>
                 </div>
                 <div class="welcome-footer">
@@ -624,20 +619,19 @@
         };
 
         const beerImages = {
-        'TXMX MEXICAN LAGER': 'Images/beer-in-glass-01.jpg',
-        'EL HEFE': 'images/el_hefe.jpg',
-        'CASA BLANCA WHEAT ALE': 'Images/beer-in-glass-02.jpg',
-        'STEAM BEER': 'Images/beer-in-glass-02.jpg.jpg',
-        'AMERICANO AMBER ALE': 'Images/beer-in-glass-01.jpg',
-        'LA SANCHA P.O.G. ALE': 'Images/beer-in-glass-02.jpg.jpg',
-        'WERITA BLONDE ALE': 'Images/beer-in-glass-01.jpg',
-        'LA SUEGRA PALE ALE': 'Images/beer-in-glass-02.jpg.jpg',
-        'JUGUITO IPA': 'Images/beer-in-glass-01.jpg',
-        'GALLO NEGRO BLACK IPA': 'Images/beer-in-glass-02.jpg.jpg',
-        'CERVEZA NEGRA STOUT': 'Images/beer-in-glass-01.jpg',
-        'EL CHAPARRO BLACK LAGER': 'Images/beer-in-glass-02.jpg.jpg',
-        'MANGONADA WHEAT ALE': 'Images/beer-in-glass-01.jpg
-            
+            'TXMX MEXICAN LAGER': 'Images/beer-in-glass-01.jpg',
+            'EL HEFE': 'images/el_hefe.jpg',
+            'CASA BLANCA WHEAT ALE': 'Images/beer-in-glass-02.jpg',
+            'STEAM BEER': 'Images/beer-in-glass-02.jpg',
+            'AMERICANO AMBER ALE': 'Images/beer-in-glass-01.jpg',
+            'LA SANCHA P.O.G. ALE': 'Images/beer-in-glass-02.jpg',
+            'WERITA BLONDE ALE': 'Images/beer-in-glass-01.jpg',
+            'LA SUEGRA PALE ALE': 'Images/beer-in-glass-02.jpg',
+            'JUGUITO IPA': 'Images/beer-in-glass-01.jpg',
+            'GALLO NEGRO BLACK IPA': 'Images/beer-in-glass-02.jpg',
+            'CERVEZA NEGRA STOUT': 'Images/beer-in-glass-01.jpg',
+            'EL CHAPARRO BLACK LAGER': 'Images/beer-in-glass-02.jpg',
+            'MANGONADA WHEAT ALE': 'Images/beer-in-glass-01.jpg'
         };
 
         const questions = [
@@ -784,7 +778,7 @@
             } else {
                 questionHTML = `
                     <div class="question active" id="question-${currentQuestion}">
-                        <div class="question-image">Placeholder_${question.question.split(' ')[1] || 'image'}</div>
+                        <div class="question-image">${question.imageText}</div>
                         <h3>${question.question}</h3>
                         <div class="spanish-subtitle">${question.spanish}</div>
                         <div class="options">
@@ -814,10 +808,7 @@
                         <div class="abv" id="resultABV"></div>
                     </div>
                     <div class="result-beer-image">
-                        <img src="${beerImages[bestMatch.name] || 'images/default_beer.jpg'}" 
-                        alt="${bestMatch.name}"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                    <span style="display:none;">🍺 ${bestMatch.name}</span
+                        <span>Beer Image</span>
                     </div>
                     <div class="result-description" id="resultDescription"></div>
                     <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
@@ -959,7 +950,7 @@
             document.getElementById('progressFill').style.width = progress + '%';
         }
 
-        function () {
+        function showResult() {
             let bestMatch = null;
             let bestScore = -1;
 
@@ -989,7 +980,10 @@
                         <div class="abv">ABV: ${bestMatch.abv}</div>
                     </div>
                     <div class="result-beer-image">
-                        <span>🍺 ${bestMatch.name}</span>
+                        <img src="${beerImages[bestMatch.name] || 'images/default_beer.jpg'}" 
+                             alt="${bestMatch.name}"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none;">🍺 ${bestMatch.name}</span>
                     </div>
                     <div class="result-description">${bestMatch.description}</div>
                     <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
@@ -1016,7 +1010,10 @@
                     <div class="welcome-header">
                         <h1>¡Órale! Let's Find Your Cerveza</h1>
                         <div class="welcome-logo">
-                            <span>Saludos Brewing Company Logo</span>
+                            <img src="https://github.com/nvierno/Saludos-Quiz-01/blob/68046a392dac9c409f9a5b053acd2df445560f1a/saludos-brewing-logo.png" 
+                                 alt="Saludos Brewing Company Logo"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display:none;">Saludos Brewing Company Logo</span>
                         </div>
                     </div>
                     <div class="welcome-footer">
@@ -1040,6 +1037,10 @@
             document.getElementById('progressFill').style.width = '0%';
         }
 
+        // Initialize the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initQuiz();
+        });
     </script>
 </body>
 </html>
