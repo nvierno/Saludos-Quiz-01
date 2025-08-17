@@ -853,7 +853,6 @@
             {
                 question: "🍻 How much kick do you like in your cerveza?",
                 spanish: "¿Qué tanto poder te gusta en tu chela?",
-                imageText: "Image: ABV meter, strength gauge, alcohol percentage symbols",
                 isSlider: true,
                 sliderLabels: ["5.7% ABV - ¡Fuerte!", "4.5% ABV - Balanced", "4.0% ABV - Suave"],
                 sliderDescriptions: [
@@ -947,7 +946,6 @@
             } else {
                 questionHTML = `
                     <div class="question active" id="question-${currentQuestion}">
-                        <div class="question-image">${question.imageText}</div>
                         <h3>${question.question}</h3>
                         <div class="spanish-subtitle">${question.spanish}</div>
                         <div class="options">
